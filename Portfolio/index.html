@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohammed Faiz Y — Frontend Developer</title>
+  <meta name="description" content="Portfolio of Mohammed Faiz Y, a frontend developer building fast, accessible interfaces with semantic HTML, CSS and vanilla JavaScript." />
+  <meta name="theme-color" content="#f6f7fb" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234f46e5'/%3E%3Ctext x='32' y='42' font-family='system-ui,sans-serif' font-size='24' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EMF%3C/text%3E%3C/svg%3E" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      try {
+        var stored = localStorage.getItem('portfolio-theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        root.setAttribute('data-theme', theme);
+      } catch (e) {}
+      root.classList.add('js');
+    })();
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER / NAV ================= -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="Mohammed Faiz Y — back to top">
+        <span class="brand-mark" aria-hidden="true">MF</span>
+        <span class="brand-name">Mohammed Faiz Y</span>
+      </a>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+          </svg>
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+          <span class="sr-only">Toggle navigation menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Hi, I'm</p>
+          <h1 id="hero-title">Mohammed Faiz Y</h1>
+          <p class="hero-pitch">I build fast, accessible web interfaces that feel effortless to use.</p>
+          <p class="hero-sub">
+            Frontend developer based in India. Currently going deep on semantic HTML,
+            modern CSS and vanilla JavaScript — no frameworks, no shortcuts.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">View my work</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <div class="hero-card-grid"></div>
+          <p class="hero-monogram">MF</p>
+          <p class="hero-status"><span class="dot"></span>Open to opportunities</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">01 — About</p>
+          <h2 id="about-title">A bit about me</h2>
+        </div>
+
+        <div class="about-grid reveal">
+          <div class="about-text">
+            <p>
+              I'm a frontend developer who cares about the boring parts: markup that
+              makes sense, layouts that survive a 320px screen, and pages that load
+              before you notice.
+            </p>
+            <p>
+              I started out rebuilding sites I liked to figure out how they worked, and
+              that habit stuck. Today I spend most of my time writing HTML and CSS from
+              scratch, then layering on just enough JavaScript to make things feel alive —
+              theme toggles, filters, form validation, that sort of thing.
+            </p>
+            <p>
+              Right now I'm looking for a frontend internship or junior role where I can
+              ship real features with people who review code properly.
+            </p>
+          </div>
+
+          <ul class="facts">
+            <li><span class="fact-label">Location</span><span class="fact-value">India (IST, GMT+5:30)</span></li>
+            <li><span class="fact-label">Focus</span><span class="fact-value">HTML · CSS · JavaScript</span></li>
+            <li><span class="fact-label">Currently</span><span class="fact-value">Learning React &amp; testing</span></li>
+            <li><span class="fact-label">Availability</span><span class="fact-value">Open to internships</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">02 — Skills</p>
+          <h2 id="skills-title">What I work with</h2>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <h3>Markup &amp; Styling</h3>
+            <p class="skill-desc">Structuring pages that are readable to humans and machines alike.</p>
+            <ul class="tags">
+              <li>Semantic HTML5</li>
+              <li>CSS Grid</li>
+              <li>Flexbox</li>
+              <li>Custom Properties</li>
+              <li>Responsive Design</li>
+              <li>Accessibility (WCAG)</li>
+            </ul>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3>JavaScript</h3>
+            <p class="skill-desc">DOM work, async data and keeping state small enough to reason about.</p>
+            <ul class="tags">
+              <li>ES2020+</li>
+              <li>DOM APIs</li>
+              <li>Fetch / REST</li>
+              <li>localStorage</li>
+              <li>IntersectionObserver</li>
+              <li>Form Validation</li>
+            </ul>
+          </article>
+
+          <article class="skill-card reveal">
+            <h3>Tooling &amp; Workflow</h3>
+            <p class="skill-desc">The supporting cast — version control, debugging and delivery.</p>
+            <ul class="tags">
+              <li>Git &amp; GitHub</li>
+              <li>Chrome DevTools</li>
+              <li>VS Code</li>
+              <li>GitHub Pages</li>
+              <li>Lighthouse</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">03 — Projects</p>
+          <h2 id="projects-title">Things I've built</h2>
+          <p class="section-sub">
+            Six projects, all vanilla — no build step, no framework. Filter by what
+            you're curious about.
+          </p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter projects by category">
+          <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="javascript" aria-pressed="false">JavaScript</button>
+          <button class="filter" type="button" data-filter="css" aria-pressed="false">CSS</button>
+          <button class="filter" type="button" data-filter="api" aria-pressed="false">API</button>
+        </div>
+
+        <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
+
+        <ul class="project-grid" id="project-grid">
+          <!-- TODO: replace the href values below with your real live + repo URLs -->
+          <li class="project-card" data-category="javascript api">
+            <article class="project">
+              <h3 class="project-title">Weather Dashboard</h3>
+              <p class="project-desc">
+                Location-based weather app that pulls current conditions and a five-day
+                forecast, with a debounced city search and a cached last-searched location.
+              </p>
+              <ul class="tags project-tech">
+                <li>JavaScript</li><li>Fetch API</li><li>CSS Grid</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://example.com/weather" target="_blank" rel="noopener noreferrer">
+                  Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                  Source code
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+              </div>
+            </article>
+          </li>
+
+          <li class="project-card" data-category="javascript api">
+            <article class="project">
+              <h3 class="project-title">Recipe Finder</h3>
+              <p class="project-desc">
+                Search recipes by ingredient against a public REST API, with a detail
+                view, saved favourites and deliberate empty and error states.
+              </p>
+              <ul class="tags project-tech">
+                <li>JavaScript</li><li>REST</li><li>Flexbox</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://example.com/recipes" target="_blank" rel="noopener noreferrer">
+                  Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                  Source code
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+              </div>
+            </article>
+          </li>
+
+          <li class="project-card" data-category="javascript">
+            <article class="project">
+              <h3 class="project-title">Focus Timer</h3>
+              <p class="project-desc">
+                Pomodoro-style timer with configurable work and break intervals,
+                keyboard shortcuts and session statistics persisted in localStorage.
+              </p>
+              <ul class="tags project-tech">
+                <li>JavaScript</li><li>Web Audio</li><li>localStorage</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://example.com/focus-timer" target="_blank" rel="noopener noreferrer">
+                  Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                  Source code
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+              </div>
+            </article>
+          </li>
+
+          <li class="project-card" data-category="javascript">
+            <article class="project">
+              <h3 class="project-title">Task Tracker</h3>
+              <p class="project-desc">
+                A dependency-free kanban board with drag-and-drop columns, inline
+                editing and JSON export so your board is never locked in.
+              </p>
+              <ul class="tags project-tech">
+                <li>JavaScript</li><li>Drag &amp; Drop</li><li>localStorage</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://example.com/task-tracker" target="_blank" rel="noopener noreferrer">
+                  Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                  Source code
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+              </div>
+            </article>
+          </li>
+
+          <li class="project-card" data-category="css">
+            <article class="project">
+              <h3 class="project-title">This Portfolio</h3>
+              <p class="project-desc">
+                The site you're on. Semantic HTML, a token-driven CSS system and a
+                handful of vanilla JS interactions — theme toggle, project filter, scroll spy.
+              </p>
+              <ul class="tags project-tech">
+                <li>HTML</li><li>CSS</li><li>JavaScript</li>
+              </ul>
+              <div class="project-links">
+                <a href="#hero">
+                  Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                  Source code
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+              </div>
+            </article>
+          </li>
+
+          <li class="project-card" data-category="css">
+            <article class="project">
+              <h3 class="project-title">Component Library</h3>
+              <p class="project-desc">
+                A small set of reusable UI pieces — buttons, cards, modals, form
+                controls — documented with live examples and full dark-mode support.
+              </p>
+              <ul class="tags project-tech">
+                <li>HTML</li><li>Custom Properties</li><li>Accessibility</li>
+              </ul>
+              <div class="project-links">
+                <a href="https://example.com/components" target="_blank" rel="noopener noreferrer">
+                  Live demo
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                  Source code
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
+                </a>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="contact-copy">
+            <p class="eyebrow">04 — Contact</p>
+            <h2 id="contact-title">Let's build something</h2>
+            <p>
+              I'm open to frontend internships and junior roles. If you've got a
+              project, a question, or just want to say hi, my inbox and phone are open.
+            </p>
+
+            <ul class="contact-list">
+              <li>
+                <span class="label">Name</span>
+                <span class="value">Mohammed Faiz Y</span>
+              </li>
+              <li>
+                <span class="label">Email</span>
+                <a class="value" href="mailto:faizacct@gmail.com">faizacct@gmail.com</a>
+              </li>
+              <li>
+                <span class="label">Phone</span>
+                <a class="value" href="tel:+917397470456">+91 73974 70456</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:faizacct@gmail.com">Email me</a>
+            <a class="btn btn-ghost" href="tel:+917397470456">Call me</a>
+
+            <ul class="social-list" aria-label="Social and contact links">
+              <li>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.1.79-.25.79-.55v-2.1c-3.2.7-3.88-1.36-3.88-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.8.55A11.5 11.5 0 0 0 12 .5Z" /></svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05a4.17 4.17 0 0 1 3.75-2.06c4 0 4.4 2.63 4.4 6.05V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.84 0-2.12 1.43-2.12 2.9V21h-4V9Z" /></svg>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:faizacct@gmail.com" aria-label="Send an email to faizacct@gmail.com">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5" /><path d="m3 6.5 9 6 9-6" /></svg>
+                </a>
+              </li>
+              <li>
+                <a href="tel:+917397470456" aria-label="Call +91 73974 70456">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4.5-2 1.5a12 12 0 0 0 6 6l1.5-2L21 14.5v3a3 3 0 0 1-3.3 3A17 17 0 0 1 3.5 6.3 3 3 0 0 1 6.5 3Z" /></svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-contact">
+        <p class="footer-name">Mohammed Faiz Y</p>
+        <p class="footer-links">
+          <a href="mailto:faizacct@gmail.com">faizacct@gmail.com</a>
+          <span class="footer-sep" aria-hidden="true">·</span>
+          <a href="tel:+917397470456">+91 73974 70456</a>
+        </p>
+      </div>
+
+      <p class="footer-meta">
+        &copy; <span id="year">2025</span> Mohammed Faiz Y. Built with plain HTML, CSS &amp; JavaScript.
+      </p>
+
+      <a class="footer-top" href="#hero">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
