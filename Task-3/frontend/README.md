@@ -1,16 +1,24 @@
-# React + Vite
+# LinkVault - Personal Bookmarking Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack bookmark manager where users can save links, organize them into categories, and access them from anywhere.
 
-Currently, two official plugins are available:
+## Live Demo
+- Frontend: [Your Vercel URL]
+- Backend API: [Your Render URL]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- JWT Authentication (Register/Login)
+- Add, view, and delete bookmarks
+- Organize bookmarks into categories
+- Responsive UI with loading spinners and graceful error handling
+- Client-side form validation
 
-## React Compiler
+## Tech Stack
+- **Frontend:** React (Vite), React Router, Context API, Vanilla CSS
+- **Backend:** Node.js, Express, Sequelize
+- **Database:** PostgreSQL (hosted on Render)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Local Development
+1. Clone the repo.
+2. Backend: `cd backend && npm install && npm run dev`
+3. Frontend: `cd frontend && npm install && npm run dev`
