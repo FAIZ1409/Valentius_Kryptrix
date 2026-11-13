@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Layout from './components/Layout';
+import BookmarkList from './pages/BookmarkList';
+import BookmarkForm from './pages/BookmarkForm';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -31,6 +33,10 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
+        <Route element={<ProtectedRoute />}>
+            <Route index element={<BookmarkList />} />
+            <Route path="bookmarks/new" element={<BookmarkForm />} />
+        </Route>
       </BrowserRouter>
     </AuthProvider>
   );
