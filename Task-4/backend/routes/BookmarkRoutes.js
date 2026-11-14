@@ -2,8 +2,8 @@ const express = require('express');
 const { body } = require('express-validator');
 const { validate } = require('../middleware/validate');
 const { verifyJWT } = require('../middleware/auth');
-const ctrl = require('../controllers/taskController');
-const { Task } = require('../models');
+const ctrl = require('../controllers/bookmarkController');
+const { Bookmark } = require('../models');
 
 const router = express.Router();
 router.use(verifyJWT);
@@ -12,7 +12,7 @@ router.route('/')
   .get(ctrl.list)
   .post(validate([
     body('title').trim().notEmpty().withMessage('Title required'),
-    body('status').optional().isIn(Task.STATUSES)
+    body('status').optional().isIn(Bookmark.STATUSES)
   ]), ctrl.create);
 
 router.route('/:id')
