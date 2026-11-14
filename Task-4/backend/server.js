@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const { initDatabase } = require('./models');
 const authRoutes = require('./routes/authRoutes');
 const bookRoutes = require('./routes/BookmarkRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
 const app = express();
@@ -25,6 +26,7 @@ app.use(cors(corsOptions)); // <--- Only applied here!
 app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
 app.use('/api/auth', authRoutes);
 app.use('/api/bookmarks', bookRoutes);
+app.use('/api/categories', categoryRoutes); 
 
 // 4. Error Handlers
 app.use(notFound);
