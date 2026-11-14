@@ -24,7 +24,7 @@ app.use(cors(corsOptions)); // <--- Only applied here!
 // 3. Routes
 app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
 app.use('/api/auth', authRoutes);
-app.use('/api/tasks', bookRoutes);
+app.use('/api/bookmarks', bookRoutes);
 
 // 4. Error Handlers
 app.use(notFound);
