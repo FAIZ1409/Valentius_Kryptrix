@@ -5,9 +5,9 @@ import Layout from './components/Layout';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
-import TaskList from './pages/TaskList';
+import BookmarkList from './pages/BookmarkList';
+import BookmarkForm from './pages/BookmarkForm';
 import TaskDetail from './pages/TaskDetail';
-import TaskForm from './pages/TaskForm';
 
 export default function App() {
   return (
@@ -21,10 +21,8 @@ export default function App() {
 
             {/* Protected Routes */}
             <Route element={<ProtectedRoute />}>
-              <Route index element={<TaskList />} />
-              <Route path="tasks/new" element={<TaskForm />} />
-              <Route path="tasks/:id" element={<TaskDetail />} />
-              <Route path="tasks/:id/edit" element={<TaskForm />} />
+                <Route index element={<BookmarkList />} />
+                <Route path="bookmarks/new" element={<BookmarkForm />} />
             </Route>
             
             {/* Catch-all */}
