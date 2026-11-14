@@ -7,7 +7,6 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import BookmarkList from './pages/BookmarkList';
 import BookmarkForm from './pages/BookmarkForm';
-import TaskDetail from './pages/TaskDetail';
 
 export default function App() {
   return (
