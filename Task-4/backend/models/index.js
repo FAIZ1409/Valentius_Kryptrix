@@ -1,7 +1,7 @@
 const sequelize = require('../config/database');
 const User = require('./User');
-const Category = require('./Category');
-const Bookmark = require('./Bookmark');
+const Category = require('./category');
+const Bookmark = require('./bookmark');
 
 // Associations
 User.hasMany(Category, { foreignKey: 'userId', onDelete: 'CASCADE' });
