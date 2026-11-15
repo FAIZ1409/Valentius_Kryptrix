@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User } = require('../models');
+const { User, Category } = require('../models'); // 1. ADDED Category HERE
 const AppError = require('../utils/AppError');
 
 const signToken = (user) => jwt.sign({ sub: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
@@ -8,9 +8,19 @@ exports.register = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     if (await User.findOne({ where: { email } })) throw new AppError('Email exists.', 409);
+    
     const user = User.build({ name, email });
     await user.setPassword(password);
     await user.save();
+
+    // 2. ADDED THIS BLOCK to auto-create categories for the new user
+    await Category.bulkCreate([
+      { name: 'Fiction', userId: user.id },
+      { name: 'Non-Fiction', userId: user.id },
+      { name: 'Tech & Coding', userId: user.id },
+      { name: 'Inspiration', userId: user.id }
+    ]);
+
     res.status(201).json({ message: 'Account created.', token: signToken(user), user });
   } catch (err) { next(err); }
 };
