@@ -4,7 +4,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { initDatabase } = require('./models');
 const authRoutes = require('./routes/authRoutes');
-const bookRoutes = require('./routes/BookmarkRoutes');
+const bookRoutes = require('./routes/bookmarkRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
