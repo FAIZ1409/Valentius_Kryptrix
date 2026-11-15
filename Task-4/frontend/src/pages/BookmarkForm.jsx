@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'; // Import useParams
+import { useNavigate, useParams } from 'react-router-dom';
 import { apiRequest } from '../api/client';
 import Spinner from '../components/Spinner';
 
 export default function BookmarkForm() {
-  const { id } = useParams(); // Get ID from URL if it exists
+  const { id } = useParams();
   const isEditing = Boolean(id);
   const navigate = useNavigate();
 
@@ -12,15 +12,14 @@ export default function BookmarkForm() {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
   const [validationErrors, setValidationErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(isEditing); // Show spinner if editing
+  const [isLoading, setIsLoading] = useState(isEditing);
+
+  // State for inline category creation
+  const [isAddingCategory, setIsAddingCategory] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState('');
 
   useEffect(() => {
-    // 1. Fetch categories for the dropdown
-    apiRequest('/categories')
-      .then(data => setCategories(data.categories))
-      .catch(() => {});
-
-    // 2. If editing, fetch the bookmark data to pre-fill the form
+    apiRequest('/categories').then(data => setCategories(data.categories)).catch(() => {});
     if (isEditing) {
       apiRequest(`/bookmarks/${id}`)
         .then(data => {
@@ -45,31 +44,37 @@ export default function BookmarkForm() {
     return Object.keys(errors).length === 0;
   };
 
+  // Function to create a new category on the fly
+  const handleCreateCategory = async () => {
+    if (!newCategoryName.trim()) return;
+    try {
+      const data = await apiRequest('/categories', {
+        method: 'POST',
+        body: JSON.stringify({ name: newCategoryName })
+      });
+      setCategories([...categories, data.category]); // Add to list
+      setFormData({ ...formData, categoryId: data.category.id }); // Auto-select it
+      setIsAddingCategory(false);
+      setNewCategoryName('');
+    } catch (err) {
+      alert("Failed to create category: " + err.message);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     if (!validate()) return;
 
-    const payload = {
-      ...formData,
-      categoryId: formData.categoryId || null // Send null if empty
-    };
+    const payload = { ...formData, categoryId: formData.categoryId || null };
 
     try {
       if (isEditing) {
-        // UPDATE (PATCH)
-        await apiRequest(`/bookmarks/${id}`, { 
-          method: 'PATCH', 
-          body: JSON.stringify(payload) 
-        });
+        await apiRequest(`/bookmarks/${id}`, { method: 'PATCH', body: JSON.stringify(payload) });
       } else {
-        // CREATE (POST)
-        await apiRequest('/bookmarks', { 
-          method: 'POST', 
-          body: JSON.stringify(payload) 
-        });
+        await apiRequest('/bookmarks', { method: 'POST', body: JSON.stringify(payload) });
       }
-      navigate('/'); // Go back to list on success
+      navigate('/');
     } catch (err) {
       setError(err.message);
     }
@@ -80,44 +85,50 @@ export default function BookmarkForm() {
   return (
     <div className="form-card">
       <h2>{isEditing ? 'Edit Bookmark' : 'Add Bookmark'}</h2>
-      
       {error && <div className="alert alert-error">{error}</div>}
       
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Title *</label>
-          <input type="text" name="title" value={formData.title} 
-                 onChange={e => setFormData({...formData, title: e.target.value})} />
+          <input type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
           {validationErrors.title && <span className="error-text">{validationErrors.title}</span>}
         </div>
         
         <div className="form-group">
           <label>URL *</label>
-          <input type="text" name="url" placeholder="https://..." value={formData.url} 
-                 onChange={e => setFormData({...formData, url: e.target.value})} />
+          <input type="text" placeholder="https://..." value={formData.url} onChange={e => setFormData({...formData, url: e.target.value})} />
           {validationErrors.url && <span className="error-text">{validationErrors.url}</span>}
         </div>
 
         <div className="form-group">
-          <label>Category</label>
-          <select name="categoryId" value={formData.categoryId} 
-                  onChange={e => setFormData({...formData, categoryId: e.target.value})}>
-            <option value="">-- No Category --</option>
-            {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-          </select>
+          <label style={{ display: 'flex', justifyContent: 'space-between' }}>
+            Category 
+            <button type="button" onClick={() => setIsAddingCategory(!isAddingCategory)} style={{ background: 'none', border: 'none', color: 'var(--primary)', cursor: 'pointer', fontSize: '0.8rem' }}>
+              {isAddingCategory ? 'Cancel' : '+ Add New'}
+            </button>
+          </label>
+          
+          {isAddingCategory ? (
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <input type="text" placeholder="e.g. Fiction, Tech..." value={newCategoryName} onChange={e => setNewCategoryName(e.target.value)} />
+              <button type="button" onClick={handleCreateCategory} className="btn btn-primary btn-sm">Save</button>
+            </div>
+          ) : (
+            <select value={formData.categoryId} onChange={e => setFormData({...formData, categoryId: e.target.value})}>
+              <option value="">-- No Category --</option>
+              {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          )}
         </div>
 
         <div className="form-group">
           <label>Description</label>
-          <textarea name="description" value={formData.description} 
-                    onChange={e => setFormData({...formData, description: e.target.value})} />
+          <textarea value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} />
         </div>
         
         <div className="form-actions">
           <button type="button" onClick={() => navigate('/')} className="btn btn-outline">Cancel</button>
-          <button type="submit" className="btn btn-primary">
-            {isEditing ? 'Save Changes' : 'Save Bookmark'}
-          </button>
+          <button type="submit" className="btn btn-primary">{isEditing ? 'Save Changes' : 'Save Bookmark'}</button>
         </div>
       </form>
     </div>
