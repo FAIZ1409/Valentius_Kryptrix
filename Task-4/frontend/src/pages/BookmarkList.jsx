@@ -56,6 +56,9 @@ export default function BookmarkList() {
                 Visit Link ↗
               </a>
               <div className="task-actions">
+                <button onClick={() => navigate(`/bookmarks/${bookmark.id}/edit`)} className="btn btn-sm">
+                  Edit
+                </button>
                 <button onClick={() => handleDelete(bookmark.id)} className="btn btn-sm btn-danger">Delete</button>
               </div>
             </div>
