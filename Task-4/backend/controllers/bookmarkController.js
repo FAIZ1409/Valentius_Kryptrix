@@ -1,7 +1,7 @@
 const { Bookmark, Category } = require('../models');
 const AppError = require('../utils/AppError');
 
-// 1. GET all bookmarks
+// 1. GET all
 exports.list = async (req, res, next) => {
   try {
     const bookmarks = await Bookmark.findAll({ 
@@ -13,7 +13,7 @@ exports.list = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-// 2. GET one bookmark
+// 2. GET one
 exports.getOne = async (req, res, next) => {
   try {
     const bookmark = await Bookmark.findByPk(req.params.id);
@@ -23,7 +23,7 @@ exports.getOne = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-// 3. POST (create) a bookmark
+// 3. POST (create)
 exports.create = async (req, res, next) => {
   try {
     const bookmark = await Bookmark.create({ ...req.body, userId: req.user.id });
@@ -31,7 +31,7 @@ exports.create = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-// 4. PATCH (update) a bookmark
+// 4. PATCH (update)
 exports.update = async (req, res, next) => {
   try {
     const bookmark = await Bookmark.findByPk(req.params.id);
@@ -43,7 +43,7 @@ exports.update = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-// 5. DELETE a bookmark
+// 5. DELETE
 exports.delete = async (req, res, next) => {
   try {
     const bookmark = await Bookmark.findByPk(req.params.id);
