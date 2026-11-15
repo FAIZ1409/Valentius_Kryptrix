@@ -22,6 +22,9 @@ export default function App() {
             <Route element={<ProtectedRoute />}>
                 <Route index element={<BookmarkList />} />
                 <Route path="bookmarks/new" element={<BookmarkForm />} />
+                
+                {/* THIS IS THE MISSING ROUTE */}
+                <Route path="bookmarks/:id/edit" element={<BookmarkForm />} /> 
             </Route>
             
             {/* Catch-all */}
